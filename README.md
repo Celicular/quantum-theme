@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Quantum Visualization
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An immersive 3D quantum-inspired visualization with React and Three.js.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Dynamic Star Background**: A space environment with twinkling stars, shooting stars, and nebula clouds
+- **Quantum Cube**: Nested 3D cubes with an outer transparent cube and an inner vibrant cube, both rotating on different axes
+- **Animated Title**: "QUANTUM" title with color gradient animations and glowing effects
+- **Futuristic Search Bar**: A stylish search interface positioned at the bottom of the screen
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React.js
+- Three.js with React Three Fiber
+- Styled Components for styling
+- GLSL Shaders for custom materials and effects
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup and Running
 
-### `npm test`
+1. Install dependencies:
+   ```
+   npm install
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Run the development server:
+   ```
+   npm start
+   ```
 
-### `npm run build`
+3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How It Works
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application creates a 3D scene with the following components:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **StarBackground**: Creates multiple layers of stars with different behaviors:
+   - Regular background stars
+   - Twinkling stars with color variations
+   - Shooting stars with trailing effects
+   - Nebula clouds with color gradients
 
-### `npm run eject`
+2. **QuantumCube**: Two nested cubes:
+   - Outer cube: Transparent material with 80% transparency
+   - Inner cube: Custom shader material with chroma gradient effects
+   - Both cubes rotate independently on all three axes
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **AnimatedTitle**: Text with multiple animations:
+   - Color gradient animations
+   - Pulsing effect
+   - Letter spacing animation
+   - Glowing text effects
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **FuturisticSearchBar**: Positioned at the bottom of the screen with:
+   - Transparent background with blur effect
+   - Glowing border
+   - Interactive hover and focus states
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Customization
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You can customize various aspects of the visualization:
 
-## Learn More
+- Adjust star density, sizes, and colors in `StarBackground.js`
+- Modify cube sizes, rotation speeds, and materials in `QuantumCube.js`
+- Change title animations and styling in `AnimatedTitle.js`
+- Adjust search bar positioning and appearance in `FuturisticSearchBar.js`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
