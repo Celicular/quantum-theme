@@ -31,6 +31,11 @@ const SearchBarContainer = styled.div`
   z-index: 1000;
   width: 450px;
   max-width: 90vw;
+  
+  /* Adjust position on mobile to avoid overlap */
+  @media (max-width: 767px) {
+    bottom: 20px;
+  }
 `;
 
 const SearchInputWrapper = styled.div`
@@ -153,8 +158,15 @@ const FuturisticSearchBar = ({ onSearch }) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (searchTerm.trim() && onSearch) {
-      onSearch(searchTerm);
+    if (searchTerm.trim()) {
+      // If onSearch prop exists, use it
+      if (onSearch) {
+        onSearch(searchTerm);
+      }
+      
+      // Open Google search in a new tab
+      const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
+      window.open(googleSearchUrl, '_blank', 'noopener,noreferrer');
     }
     
     // Add a subtle focus effect

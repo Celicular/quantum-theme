@@ -103,6 +103,16 @@ const MainTitle = styled.h1`
   text-shadow: 0 0 10px rgba(138, 43, 226, 0.7), 
                0 0 20px rgba(138, 43, 226, 0.5), 
                0 0 30px rgba(138, 43, 226, 0.3);
+  
+  /* Make title responsive for mobile */
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    letter-spacing: 6px;
+    animation: ${gradientAnimation} 8s ease infinite,
+               ${pulseAnimation} 4s ease-in-out infinite,
+               ${glitchAnimation} 10s infinite;
+    width: 90%;
+  }
 `;
 
 const GlowLayer = styled.span`
@@ -120,6 +130,14 @@ const GlowLayer = styled.span`
   filter: blur(8px);
   animation: ${gradientAnimation} 8s ease infinite,
              ${letterSpacingAnimation} 8s ease-in-out infinite;
+             
+  /* Make glow layer responsive for mobile */
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    letter-spacing: 6px;
+    animation: ${gradientAnimation} 8s ease infinite;
+    width: 90%;
+  }
 `;
 
 const Subtitle = styled.div`
@@ -129,6 +147,12 @@ const Subtitle = styled.div`
   margin-top: 15px;
   letter-spacing: 4px;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  
+  /* Responsive subtitle */
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
 `;
 
 const AnimatedTitle = () => {
