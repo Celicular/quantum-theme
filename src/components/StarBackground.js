@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 const StarBackground = forwardRef((props, ref) => {
-  const { panEnabled } = props;
+  const { panEnabled, starCounts = {} } = props;
   
   // References for different star groups
   const regularStarsRef = useRef();
@@ -32,14 +32,15 @@ const StarBackground = forwardRef((props, ref) => {
            (typeof window !== 'undefined' && window.innerWidth <= 768);
   }, []);
   
-  // Define counts based on device type - consistent values
+  // Define counts based on provided props or defaults
   const counts = useMemo(() => ({
-    regularStars: isMobile ? 800 : 2000,
-    twinklingStars: isMobile ? 150 : 400,
-    shootingStars: isMobile ? 20 : 50,
-    nebulaClouds: isMobile ? 4 : 8,
-    trailLength: isMobile ? 8 : 15
-  }), [isMobile]);
+    regularStars: starCounts?.regular || 2000,
+    twinklingStars: starCounts?.twinkling || 400,
+    shootingStars: starCounts?.shootingStars || 50,
+    nebulaClouds: starCounts?.nebulaClouds || 8,
+    trailLength: starCounts?.shootingStars ? 
+                (starCounts.shootingStars < 20 ? 8 : 15) : 15
+  }), [starCounts]);
 
   // Helper function to create a star texture
   const createStarTexture = () => {

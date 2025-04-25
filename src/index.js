@@ -4,14 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Use createRoot API for React 18 with concurrent features
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // Remove StrictMode in production to avoid double rendering cycles
+  <App />
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Only measure performance in production
+// Learn more: https://bit.ly/CRA-vitals
+if (process.env.NODE_ENV === 'production') {
+  reportWebVitals();
+}

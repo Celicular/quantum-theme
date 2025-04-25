@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useRef, useCallback } from 'react';
+import React, { Suspense, useState, useRef, useCallback, useMemo } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import styled from 'styled-components';
@@ -8,6 +8,7 @@ import AnimatedTitle from './AnimatedTitle';
 import FuturisticSearchBar from './FuturisticSearchBar';
 import ControlToolbar from './ControlToolbar';
 import { FaHeart } from 'react-icons/fa';
+import { getRecommendedQualitySettings } from '../utils/deviceDetection';
 
 const CanvasContainer = styled.div`
   position: absolute;
@@ -156,9 +157,8 @@ const QuantumScene = () => {
   const quantumCubeRef = useRef();
   const starBackgroundRef = useRef();
   
-  // Check if on mobile device for performance optimization
-  const isMobile = useRef(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-                           window.innerWidth <= 768);
+  // Get device-optimized quality settings
+  const qualitySettings = useMemo(() => getRecommendedQualitySettings(), []);
   
   // Callback to change cube color
   const handleChangeCubeColor = useCallback(() => {
@@ -238,7 +238,7 @@ const QuantumScene = () => {
           cursor: selectedTool === 'pan' ? 'grab' : 
                  selectedTool ? 'crosshair' : 'default'
         }}
-        dpr={isMobile.current ? 0.8 : [1, 2]} // Lower resolution on mobile
+        dpr={qualitySettings.dpr}
         onContextMenu={(e) => e.preventDefault()}
         onPointerDown={(e) => {
           // Prevent default pointer behavior if not using pan tool
@@ -247,12 +247,13 @@ const QuantumScene = () => {
           }
         }}
         gl={{ 
-          antialias: !isMobile.current, // Disable antialiasing on mobile
+          antialias: qualitySettings.antialias,
           alpha: true,
           powerPreference: 'high-performance',
-          precision: isMobile.current ? 'lowp' : 'highp' // Lower precision on mobile
+          precision: qualitySettings.precision
         }}
         frameloop="always" // Always animate to ensure cube rotation
+        performance={{ min: 0.5 }} // Allow frame rate to drop to 30fps for better mobile performance
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.2} />
@@ -270,6 +271,7 @@ const QuantumScene = () => {
           <StarBackground
             ref={starBackgroundRef}
             panEnabled={selectedTool === 'pan'}
+            starCounts={qualitySettings.starsCount}
           />
           
           <SceneController

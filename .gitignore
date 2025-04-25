@@ -10,6 +10,8 @@
 
 # production
 /build
+/dist
+*.tgz
 
 # misc
 .DS_Store
@@ -18,6 +20,31 @@
 .env.test.local
 .env.production.local
 
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+logs/
+*.log
+
+# editor
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# cache
+.npm
+.eslintcache
+.cache
+
+# deploy
+.netlify
+.vercel
